@@ -39,11 +39,17 @@ if (evt.target.nodeName !== 'IMG') {
 
     instance.show()
     
-    galleryRef.addEventListener('keydown', evt => {
+    galleryRef.addEventListener('keydown', closeEscape);
+
+    function closeEscape(evt) {
+        
         if (evt.key === 'Escape') {
-            instance.close()
+            instance.close();
+            galleryRef.removeEventListener('keydown', closeEscape);
+            console.log('closeEscape')
         }
-    })
+        
+    }
  })
 
 
